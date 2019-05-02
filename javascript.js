@@ -30,14 +30,34 @@
 
 $(document).ready(function() {
     $('#selectbutton').click(function() {
-        alert('aids');
         $.ajax({
             type: 'POST',
             url: 'straf.php',
-            data: 'id=testdata',
+            method: 'printpunishment',
+            data: 'user_id=40',
             datatype: 'array',
             success: function(result) {
                 $('#test').html(result);
+                /*result.forEach(i => {
+                    $('<p/>').prepend(result[i]);
+                    //$('#test').html(result[i]);
+                });*/
+            }
+        })
+    })
+    $('#removebutton').click(function() {
+        $.ajax({
+            type: 'POST',
+            url: 'straf.php',
+            method: 'removepunishment',
+            data: 'user_id=40, subject=1',
+            datatype: 'array',
+            success: function(result) {
+                $('#fjernstraf').html(result);
+                /*result.forEach(i => {
+                    $('<p/>').prepend(result[i]);
+                    //$('#test').html(result[i]);
+                });*/
             }
         })
     })
