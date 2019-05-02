@@ -4,7 +4,7 @@
     }
 }*/
 
-$('#loginbutton').click(function() {
+/*$('#loginbutton').click(function() {
     event.preventDefault();
     var u_name = $('#usernameinput').val();
     var p_word = $('#passwordinput').val();
@@ -25,5 +25,20 @@ $('#loginbutton').click(function() {
             }
         }
         
+    })
+})*/
+
+$(document).ready(function() {
+    $('#selectbutton').click(function() {
+        alert('aids');
+        $.ajax({
+            type: 'POST',
+            url: 'straf.php',
+            data: 'id=testdata',
+            datatype: 'array',
+            success: function(result) {
+                $('#test').html(result);
+            }
+        })
     })
 })
