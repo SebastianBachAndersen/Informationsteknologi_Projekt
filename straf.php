@@ -19,18 +19,36 @@ function straf(){
 
 function removePunisment(){ 
     $user_id = $_POST['user_id'];
-
+    // return data som int 1 = dansk,2 = matematik,3=kemi,4 = fysik,5 =  informationsteknologi
     $subject = $_POST['subject'];
 
-    switch
+    
 
     $stmt = $conn->prepare("DELETE FROM strafe WHERE bruger_id =? and subject = ?"); 
     $stmt->bind_param("is", $user_id,$subejct);
     $stmt->execute();
 
+    return "datadeleted";
+
     
 
 
+}
+function update(){
+    $user_id = $_POST['user_id'];
+    // return data som int 1 = dansk,2 = matematik,3=kemi,4 = fysik,5 =  informationsteknologi
+    $subject_id = $_POST['subject'];
+    $new_punishment = $_POST['new_straf'];
+    
+    $stmt = $conn->prepare("UPDATE strafe SET 
+    straf = ? 
+	 WHERE bruger_id = ? 
+	 AND subject_id = ?;
+   "); 
+    $stmt->bind_param("sii", $new_punishment,$user_id, $subject_id);
+    $stmt->execute();
+
+    return "update sucsessfull";
 }
 
 function printPunishment(){
