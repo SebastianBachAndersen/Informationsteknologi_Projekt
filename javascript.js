@@ -10,18 +10,18 @@ $('#loginbutton').click(function() {
     var p_word = $('#passwordinput').val();
     $.ajax({
         url: "login.php",
-        method: "stmt",
+        method: "login",
         data: {
             username: u_name,
             password: p_word
         },
         success: function(data) {
-            if (data > 0) {
+            if (login > 0) {
                 $('#loginmessage').html("success");
-            } else if (data == "tom") {
+            } else if (login == "brugernavn eller password mangler") {
                 $('#loginmessage').html("felterne er tomme???");
-            } else {
-                $('#loginmessage').html("dunno");
+            } else if (login == "password or username not correcet try agian") {
+                $('#loginmessage').html("Brugernavn eller password er forkert");
             }
         }
         

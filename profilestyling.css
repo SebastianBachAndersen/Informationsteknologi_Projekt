@@ -1,0 +1,27 @@
+h1 {
+    color: brown;
+    
+}
+
+#Navbar {
+    background-color: lightblue;
+    border-color: green;
+    border: 2px;
+    position: fixed;
+    overflow: auto;
+    margin: auto;
+    width: 25%;
+}
+body{
+    background-color: white;
+}
+span.NavbarElements {
+    color: blueviolet;
+    border: 5px solid green;
+    background-color: yellow;
+    margin: auto;
+
+}
+div.main {
+    margin-left: 30%;
+}
