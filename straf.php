@@ -18,6 +18,7 @@ function straf(){
 }
 
 function removePunisment(){ 
+    include_once("conn.php");
     $user_id = $_POST['user_id'];
     // return data som int 1 = dansk,2 = matematik,3=kemi,4 = fysik,5 =  informationsteknologi
     $subject = $_POST['subject'];
@@ -35,6 +36,7 @@ function removePunisment(){
 
 }
 function update(){
+    include_once("conn.php");
     $user_id = $_POST['user_id'];
     // return data som int 1 = dansk,2 = matematik,3=kemi,4 = fysik,5 =  informationsteknologi
     $subject_id = $_POST['subject'];
@@ -63,9 +65,14 @@ function printPunishment(){
     $printPunishmentData = array();
     $stmt->bind_result($punishmentData, $subjectdata);
     while ($stmt->fetch()) {
-        $printPunishmentData[$subjectdata] = $punishmentData;
+        $internalArray = array();
+        array_push($internalArray,$punishmentData); 
+        array_push($internalArray,$subjectdata); 
+           
+        array_push($printdata,$internalArray); 
+        
     }
-    return print_r($printPunishmentData);
+    return json_encode($printPunishmentData);
 
 }
 
