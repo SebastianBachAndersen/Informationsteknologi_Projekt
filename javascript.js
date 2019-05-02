@@ -10,7 +10,20 @@ $('#loginbutton').click(function() {
     var p_word = $('#passwordinput').val();
     $.ajax({
         url: "login.php",
-        method: "POST",
+        method: "stmt",
+        data: {
+            username: u_name,
+            password: p_word
+        },
+        success: function(data) {
+            if (data > 0) {
+                $('#loginmessage').html("success");
+            } else if (data == "tom") {
+                $('#loginmessage').html("felterne er tomme???");
+            } else {
+                $('#loginmessage').html("dunno");
+            }
+        }
         
     })
 })
